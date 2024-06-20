@@ -33,7 +33,7 @@ const Users = async () => {
                                 <dt className="mb-1 text-gray-500 md:text-lg dark:text-gray-400">
                                     Password
                                 </dt>
-                                <dd className="text-lg font-semibold min-h-20">
+                                <dd className="text-lg font-semibold min-h-20 overflow-hidden md:overflow-visible">
                                     {user.password}
                                 </dd>
                             </div>
