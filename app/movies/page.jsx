@@ -7,7 +7,7 @@ const Movies = async () => {
     let res = [];
     try {
         res = await getAllMovies();
-        console.log(res[0].plot);
+        console.log(res);
     } catch (error) {
         console.error(error);
     }

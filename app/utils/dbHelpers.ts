@@ -1,10 +1,9 @@
 import { Db } from "mongodb";
 
 const { MongoClient, ServerApiVersion } = require("mongodb");
-const { ObjectId } = require("mongodb");
-const uri =
-	"mongodb+srv://admin:admin123@cluster0.sbhd6bs.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
+const uri = process.env.DB_URL;
+const dbName = process.env.DB_NAME;
 const client = new MongoClient(uri, {
 	serverApi: {
 		version: ServerApiVersion.v1,
@@ -12,13 +11,12 @@ const client = new MongoClient(uri, {
 		deprecationErrors: true
 	}
 });
-const dbName = "sample_mflix";
 
 class DbHelper {
 	db: Db;
 	isConnected: boolean;
 	constructor() {
-		this.db = client.db("dbName");
+		this.db = client.db(dbName);
 		this.isConnected = false;
 	}
 	async connect() {

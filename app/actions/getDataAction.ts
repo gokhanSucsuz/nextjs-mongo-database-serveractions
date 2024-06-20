@@ -1,56 +1,40 @@
-const { MongoClient, ServerApiVersion } = require("mongodb");
-const { ObjectId } = require("mongodb");
-const uri =
-	"mongodb+srv://admin:admin123@cluster0.sbhd6bs.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+import dbHelpers from "../utils/dbHelpers";
+import DbHelper from "../utils/dbHelpers";
 
-const client = new MongoClient(uri, {
-	serverApi: {
-		version: ServerApiVersion.v1,
-		strict: true,
-		deprecationErrors: true
-	}
-});
+const { ObjectId } = require("mongodb");
+
+interface Users {
+	id: string;
+	name: string;
+	email: string;
+	password: string;
+}
 
 export async function getAllUsers() {
-	try {
-		await client.connect();
-		const db = await client.db("sample_mflix");
-		const res = await db.collection("users").find().toArray();
-		console.log(res);
-		return res;
-	} catch (error) {
-		console.error("Error in connectionDb:", error);
-		return [];
-	}
+	await dbHelpers.connect();
+	const collection = DbHelper.getCollection("users");
+	const res = await collection.find().toArray();
+	const userArray = res.map((item) => {
+		return {
+			email: item.email,
+			name: item.name,
+			password: item.password,
+			id: item._id.toString()
+		};
+	});
+	return userArray;
 }
 
 export async function getAllMovies() {
-	try {
-		await client.connect();
-		const db = await client.db("sample_mflix");
-		const res = await db
-			.collection("movies")
-			.find()
-			.skip(200)
-			.limit(100)
-			.toArray();
-		console.log(res[0].plot);
-		return res;
-	} catch (error) {
-		console.error("Error in connectionDb:", error);
-		return [];
-	}
+	await dbHelpers.connect();
+	const collection = DbHelper.getCollection("movies");
+	const res = await collection.find().limit(200).toArray();
+	return res;
 }
-export async function getMovie(movieId) {
+export async function getMovie(movieId: string) {
 	const objId = new ObjectId(movieId);
-	try {
-		await client.connect();
-		const db = client.db("sample_mflix");
-		const res = await db.collection("movies").findOne({ _id: objId });
-		console.log(res);
-		return res;
-	} catch (error) {
-		console.error("Error in connectionDb:", error);
-		return [];
-	}
+	await dbHelpers.connect();
+	const collection = DbHelper.getCollection("movies");
+	const res = await collection.findOne({ _id: objId });
+	return res;
 }

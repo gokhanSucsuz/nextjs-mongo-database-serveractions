@@ -5,7 +5,7 @@ const Users = async () => {
     let users = [];
     try {
         users = await getAllUsers();
-        console.log(users.name);
+        console.log(users)
     } catch (error) {
         console.error(error);
     }
