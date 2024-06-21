@@ -1,7 +1,6 @@
 import dbHelpers from "../utils/dbHelpers";
 import DbHelper from "../utils/dbHelpers";
-
-const { ObjectId } = require("mongodb");
+import { ObjectId } from "mongodb";
 
 interface Users {
 	id: string;
