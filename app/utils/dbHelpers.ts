@@ -2,7 +2,7 @@ import { Db } from "mongodb";
 
 const { MongoClient, ServerApiVersion } = require("mongodb");
 
-const uri = process.env.DB_URL;
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.sbhd6bs.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 const dbName = process.env.DB_NAME;
 const client = new MongoClient(uri, {
 	serverApi: {
