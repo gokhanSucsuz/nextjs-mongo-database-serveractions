@@ -17,13 +17,13 @@ const MovieDetail = async (p) => {
                     <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                         {res.title}</h5>
                     <div className=' p-3 flex gap-3 border flex-wrap'><span className='font-bold'>Directors: </span> {
-                        res.directors.map(item =>
-                            <div className='gap-3' key={item}> {item} </div>
+                        res.directors.map((item, index) =>
+                            <div className='gap-3' key={index}> {item} </div>
                         )
                     }</div>
                     <div className=' p-3 flex gap-3 flex-wrap sm:w-4/12 border'><span className='font-bold'>Cast: </span> {
-                        res.cast.map(item =>
-                            <div className='gap-3' key={item}> {item} </div>
+                        res.cast.map((item, index) =>
+                            <div className='gap-3' key={index}> {item} </div>
                         )
                     }</div>
                     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400  m-3">

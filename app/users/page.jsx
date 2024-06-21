@@ -5,7 +5,7 @@ const Users = async () => {
     let users = [];
     try {
         users = await getAllUsers();
-        console.log(users)
+
     } catch (error) {
         console.error(error);
     }
@@ -15,7 +15,7 @@ const Users = async () => {
             <h1 className='border bg-blue-600 text-white shadow-lg p-3 text-3xl font-bold text-center rounded '>User Info List</h1>
             {
                 users?.map((user, index) =>
-                    <div key={user._id} className={`${index % 2 === 0 ? "bg-slate-200" : ""} p-4 border m-5 rounded-md gap-2`}>
+                    <div key={index} className={`${index % 2 === 0 ? "bg-slate-200" : ""} p-4 border m-5 rounded-md gap-2`}>
                         <dl className="max-w-md text-gray-900 divide-y divide-gray-200 dark:text-white dark:divide-gray-700">
                             <div className="flex flex-col pb-3">
                                 <dt className="mb-1 text-gray-500 md:text-lg dark:text-gray-400">
