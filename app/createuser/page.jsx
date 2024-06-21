@@ -6,24 +6,25 @@ import Link from 'next/link'
 const CreateUser = () => {
     const [adding, setAdding] = useState(false)
     const [isError, setIsError] = useState(false)
-    const handleClick = async () => {
-        setAdding(true)
-        setTimeout(() => {
-            setAdding(false)
-        }, 3000)
-
-    }
 
     const handleAction = async (formData) => {
+
         const res = await addUser(formData)
 
         if (res) {
             console.log(res)
             setIsError(res)
+            setAdding(false)
         }
         else {
             setIsError(false)
+            setAdding(false)
         }
+    }
+
+    const handleClick = () => {
+        setAdding(true)
+        setIsError(false)
     }
 
     return (
@@ -47,9 +48,9 @@ const CreateUser = () => {
                 </div>
             </form>
             <div
-                className={`bg-green-500 text-white hover:bg-green-300 hover:text-slate-300 font-bold my-4 p-2 rounded-md ${adding ? "" : "hidden"}`}> New User Saving...</div>
+                className={`text-green-500 font-bold my-4 p-2 rounded-md ${adding ? "" : "hidden"}`}> New User Saving...</div>
             <div
-                className={`bg-red-500 text-white font-bold my-4 p-2 rounded-md ${isError ? "" : "hidden"}`}> This user email is already registered! Please enter new email! </div>
+                className={`text-red-500 font-bold my-4 p-2 rounded-md ${isError ? "" : "hidden"}`}> This user email is already registered! Please enter new email! </div>
         </div>
 
     )
