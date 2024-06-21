@@ -8,9 +8,7 @@ const CreateUser = () => {
     const [isError, setIsError] = useState(false)
 
     const handleAction = async (formData) => {
-
         const res = await addUser(formData)
-
         if (res) {
             console.log(res)
             setIsError(res)
@@ -21,12 +19,10 @@ const CreateUser = () => {
             setAdding(false)
         }
     }
-
     const handleClick = () => {
         setAdding(true)
         setIsError(false)
     }
-
     return (
         <div className=' p-10 border max-w-lg mx-auto my-20 shadow-lg rounded-lg'>
             <form className="max-w-sm mx-auto" action={handleAction}>
