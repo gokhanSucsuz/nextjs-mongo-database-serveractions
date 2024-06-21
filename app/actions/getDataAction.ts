@@ -23,6 +23,12 @@ export async function getAllUsers() {
 	});
 	return userArray;
 }
+export async function getUser(id: string) {
+	await dbHelpers.connect();
+	const collection = DbHelper.getCollection("users");
+	const res = await collection.findOne({ _id: new ObjectId(id) });
+	return res;
+}
 
 export async function getAllMovies() {
 	await dbHelpers.connect();

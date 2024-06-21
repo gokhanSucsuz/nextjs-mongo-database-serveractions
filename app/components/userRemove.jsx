@@ -8,7 +8,7 @@ const UserRemove = (p) => {
     const [deleting, setDeleting] = useState(false)
     const handleClick = async () => {
         setDeleting(true)
-        const result = await removeUser(p.id)
+        await removeUser(p.id)
         setDeleting(false)
     }
     return (

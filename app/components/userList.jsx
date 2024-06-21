@@ -1,6 +1,7 @@
 import Link from "next/link";
 import UserRemove from "./userRemove";
 import { FaEdit } from "react-icons/fa";
+import UserDetail from "../update/[id]/page";
 
 const UserList = (p) => {
     return (
