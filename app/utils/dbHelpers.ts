@@ -1,6 +1,6 @@
 import { MongoClient, Db, ServerApiVersion } from "mongodb";
 
-const uri = process.env.DB_URI;
+const uri = process.env.MONGODB_URI;
 console.log(uri);
 const dbName = process.env.DB_NAME;
 const client = new MongoClient(uri, {
