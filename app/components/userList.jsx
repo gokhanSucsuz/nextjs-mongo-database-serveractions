@@ -9,7 +9,7 @@ const UserList = (p) => {
             <div className="flex flex-col sm:flex-row flex-wrap  overflow-hidden space-x-4 rtl:space-x-reverse">
                 <div className="flex-shrink-0">
                     <img className="w-8 h-8 rounded-full"
-                        src={`https://ui-avatars.com/api/?name=${p.name.charAt(0)}`}
+                        src={`https://ui-avatars.com/api/?name=${p.name}`}
                     />
                 </div>
                 <div className="flex-1 min-w-0">
