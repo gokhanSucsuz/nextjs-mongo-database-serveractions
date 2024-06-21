@@ -13,6 +13,12 @@ const nextConfig = {
 				hostname: "upload.wikimedia.org",
 				port: "",
 				pathname: "/wikipedia/**"
+			},
+			{
+				protocol: "https",
+				hostname: "ui-avatars.com",
+				port: "",
+				pathname: "/api/**"
 			}
 		]
 	}
